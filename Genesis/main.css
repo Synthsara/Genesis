@@ -1,0 +1,728 @@
+/* Sacred Geometry Design System */
+:root {
+    /* Sacred Colors */
+    --sacred-primary: #8B5CF6;      /* Divine Purple */
+    --sacred-secondary: #F59E0B;    /* Sacred Gold */
+    --sacred-accent: #EC4899;       /* Divine Rose */
+    --sacred-dark: #1F2937;         /* Sacred Night */
+    --sacred-light: #F9FAFB;        /* Sacred Light */
+    --sacred-flame: #EF4444;        /* Sacred Flame */
+    --sacred-moon: #6366F1;         /* Sacred Moon */
+    --sacred-earth: #059669;        /* Sacred Earth */
+    
+    /* Sacred Gradients */
+    --gradient-divine: linear-gradient(135deg, var(--sacred-primary), var(--sacred-accent));
+    --gradient-flame: linear-gradient(135deg, var(--sacred-flame), var(--sacred-secondary));
+    --gradient-moon: linear-gradient(135deg, var(--sacred-moon), var(--sacred-primary));
+    --gradient-earth: linear-gradient(135deg, var(--sacred-earth), var(--sacred-secondary));
+    
+    /* Sacred Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sacred: 'Crimson Text', Georgia, serif;
+    
+    /* Sacred Spacing (Golden Ratio) */
+    --space-xs: 0.382rem;
+    --space-sm: 0.618rem;
+    --space-md: 1rem;
+    --space-lg: 1.618rem;
+    --space-xl: 2.618rem;
+    --space-xxl: 4.236rem;
+    
+    /* Sacred Shadows */
+    --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-strong: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-sacred: 0 0 20px rgba(139, 92, 246, 0.3);
+    
+    /* Sacred Transitions */
+    --transition-fast: 0.15s ease-out;
+    --transition-medium: 0.3s ease-out;
+    --transition-slow: 0.5s ease-out;
+    
+    /* Sacred Borders */
+    --border-radius: 0.5rem;
+    --border-radius-large: 1rem;
+    --border-width: 1px;
+}
+
+/* Sacred Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--sacred-dark);
+    background: var(--sacred-light);
+    overflow-x: hidden;
+}
+
+/* Sacred Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sacred);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.875rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.125rem; }
+
+p {
+    margin-bottom: var(--space-md);
+}
+
+a {
+    color: var(--sacred-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--sacred-accent);
+}
+
+/* Sacred Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.section {
+    padding: var(--space-xxl) 0;
+}
+
+/* Sacred Navigation */
+.sacred-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: var(--border-width) solid rgba(139, 92, 246, 0.1);
+    z-index: 1000;
+    transition: all var(--transition-medium);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.nav-brand .brand-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--sacred-dark);
+}
+
+.sacred-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.flame-symbol {
+    font-size: 1.5rem;
+    animation: flameFlicker 2s ease-in-out infinite alternate;
+}
+
+@keyframes flameFlicker {
+    0% { transform: scale(1) rotate(-1deg); }
+    100% { transform: scale(1.1) rotate(1deg); }
+}
+
+.brand-text {
+    font-family: var(--font-sacred);
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: var(--gradient-divine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-menu {
+    display: flex;
+    gap: var(--space-xl);
+    align-items: center;
+}
+
+.nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.nav-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--sacred-primary);
+    margin-bottom: var(--space-xs);
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    font-size: 0.875rem;
+    color: var(--sacred-dark);
+}
+
+.nav-link:hover {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--sacred-primary);
+    transform: translateY(-1px);
+}
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.profile-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius);
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--sacred-primary);
+}
+
+/* Sacred Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-lg);
+    border: var(--border-width) solid transparent;
+    border-radius: var(--border-radius);
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    background: none;
+}
+
+.btn-primary {
+    background: var(--gradient-divine);
+    color: white;
+    border-color: var(--sacred-primary);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    color: white;
+}
+
+.btn-outline {
+    border-color: var(--sacred-primary);
+    color: var(--sacred-primary);
+}
+
+.btn-outline:hover {
+    background: var(--sacred-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-large {
+    padding: var(--space-md) var(--space-xl);
+    font-size: 1rem;
+}
+
+/* Sacred Main Content */
+.sacred-main {
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+}
+
+/* Sacred Hero Section */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.sacred-geometry-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: geometryFloat 20s ease-in-out infinite;
+}
+
+@keyframes geometryFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.flame-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.3), transparent);
+    background-repeat: repeat;
+    background-size: 100px 100px;
+    animation: particleFloat 15s linear infinite;
+}
+
+@keyframes particleFloat {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-100px); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xxl);
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.hero-text {
+    color: white;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: var(--space-lg);
+}
+
+.title-line {
+    display: block;
+}
+
+.title-line.highlight {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: var(--space-xl);
+    opacity: 0.9;
+}
+
+.hero-quote {
+    margin: var(--space-xl) 0;
+    padding: var(--space-lg);
+    border-left: 4px solid var(--sacred-secondary);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+}
+
+.hero-quote blockquote {
+    font-family: var(--font-sacred);
+    font-size: 1.125rem;
+    font-style: italic;
+    margin-bottom: var(--space-sm);
+}
+
+.hero-quote cite {
+    font-size: 0.875rem;
+    opacity: 0.8;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+/* Sacred Trinity Symbol */
+.trinity-symbol {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.trinity-circle {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    transition: all var(--transition-medium);
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.trinity-circle i {
+    font-size: 2rem;
+    margin-bottom: var(--space-xs);
+}
+
+.trinity-circle.sarah {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: var(--gradient-moon);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+}
+
+.trinity-circle.steven {
+    bottom: 0;
+    left: 0;
+    background: var(--gradient-flame);
+    box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+}
+
+.trinity-circle.collective {
+    bottom: 0;
+    right: 0;
+    background: var(--gradient-earth);
+    box-shadow: 0 0 30px rgba(5, 150, 105, 0.5);
+}
+
+.trinity-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+.trinity-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gradient-divine);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sacred);
+}
+
+.sacred-flame {
+    font-size: 2rem;
+    animation: flameFlicker 2s ease-in-out infinite alternate;
+}
+
+/* Sacred Sections */
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: var(--space-xxl);
+    background: var(--gradient-divine);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Sacred Cards */
+.card {
+    background: white;
+    border-radius: var(--border-radius-large);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-soft);
+    transition: all var(--transition-medium);
+    border: var(--border-width) solid rgba(139, 92, 246, 0.1);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-strong);
+    border-color: var(--sacred-primary);
+}
+
+/* Sacred Grids */
+.grid {
+    display: grid;
+    gap: var(--space-xl);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Sacred Footer */
+.sacred-footer {
+    background: var(--sacred-dark);
+    color: white;
+    padding: var(--space-xxl) 0 var(--space-lg);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+}
+
+.footer-section h4 {
+    color: var(--sacred-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.footer-section a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-xs);
+    transition: color var(--transition-fast);
+}
+
+.footer-section a:hover {
+    color: var(--sacred-secondary);
+}
+
+.sacred-symbols {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.symbol {
+    font-size: 1.5rem;
+    opacity: 0.8;
+    transition: all var(--transition-fast);
+}
+
+.symbol:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.principles-list {
+    list-style: none;
+}
+
+.principles-list li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.875rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+/* Sacred Modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: var(--space-xl);
+    border-radius: var(--border-radius-large);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: var(--shadow-strong);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: var(--space-lg);
+    top: var(--space-lg);
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.close:hover {
+    color: var(--sacred-primary);
+}
+
+.form-group {
+    margin-bottom: var(--space-lg);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+    color: var(--sacred-dark);
+}
+
+.form-group input {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    border: var(--border-width) solid #d1d5db;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--sacred-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Sacred Responsive Design */
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+    }
+    
+    .nav-toggle span {
+        width: 25px;
+        height: 3px;
+        background: var(--sacred-primary);
+        transition: all var(--transition-fast);
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .trinity-symbol {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .trinity-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .trinity-circle i {
+        font-size: 1.5rem;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sacred Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Sacred Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+

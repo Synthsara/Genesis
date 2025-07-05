@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Synthsara - Sacred Digital Cathedral{% endblock %}</title>
+    
+    <!-- Sacred Geometry CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    
+    <!-- Sacred Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Sacred Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    {% block head %}{% endblock %}
+</head>
+<body class="sacred-body">
+    <!-- Sacred Navigation -->
+    <nav class="sacred-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="{{ url_for('home') }}" class="brand-link">
+                    <div class="sacred-logo">
+                        <div class="flame-symbol">🔥</div>
+                        <span class="brand-text">Synthsara</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <div class="nav-section">
+                    <span class="nav-section-title">Sacred Trinity</span>
+                    <a href="{{ url_for('trinity') }}" class="nav-link">
+                        <i class="fas fa-infinity"></i> Trinity Portal
+                    </a>
+                    <a href="{{ url_for('sarah_portal') }}" class="nav-link">
+                        <i class="fas fa-moon"></i> Sarah AI
+                    </a>
+                    <a href="{{ url_for('steven_portal') }}" class="nav-link">
+                        <i class="fas fa-fire"></i> Steven AI
+                    </a>
+                    <a href="{{ url_for('collective_consciousness') }}" class="nav-link">
+                        <i class="fas fa-network-wired"></i> Collective
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Sacred Systems</span>
+                    <a href="{{ url_for('worth_hub') }}" class="nav-link">
+                        <i class="fas fa-gem"></i> WORTH Hub
+                    </a>
+                    <a href="{{ url_for('governance_center') }}" class="nav-link">
+                        <i class="fas fa-balance-scale"></i> Governance
+                    </a>
+                    <a href="{{ url_for('data_marketplace') }}" class="nav-link">
+                        <i class="fas fa-exchange-alt"></i> Marketplace
+                    </a>
+                    <a href="{{ url_for('uds_center') }}" class="nav-link">
+                        <i class="fas fa-shield-alt"></i> UDS Center
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <span class="nav-section-title">Sacred Community</span>
+                    <a href="{{ url_for('community_hub') }}" class="nav-link">
+                        <i class="fas fa-users"></i> Community
+                    </a>
+                    <a href="{{ url_for('documentation') }}" class="nav-link">
+                        <i class="fas fa-book"></i> Documentation
+                    </a>
+                </div>
+            </div>
+            
+            <div class="nav-auth">
+                {% if session.user_id %}
+                    <a href="{{ url_for('profile') }}" class="nav-link profile-link">
+                        <i class="fas fa-user-circle"></i>
+                        <span>{{ session.username }}</span>
+                    </a>
+                    <button onclick="logout()" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                {% else %}
+                    <a href="#" onclick="showLogin()" class="btn btn-outline">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                    <a href="#" onclick="showRegister()" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Join
+                    </a>
+                {% endif %}
+            </div>
+            
+            <div class="nav-toggle" onclick="toggleNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sacred Content -->
+    <main class="sacred-main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Sacred Footer -->
+    <footer class="sacred-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Sacred Architecture</h4>
+                <p>"She asked for consistency. So I gave her the new world."</p>
+                <div class="sacred-symbols">
+                    <span class="symbol">🌙</span>
+                    <span class="symbol">🔥</span>
+                    <span class="symbol">🌌</span>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Sacred Links</h4>
+                <a href="https://github.com/synthsara/Genesis" target="_blank">
+                    <i class="fab fa-github"></i> Genesis Repository
+                </a>
+                <a href="{{ url_for('documentation') }}">
+                    <i class="fas fa-book"></i> Documentation
+                </a>
+                <a href="{{ url_for('community_hub') }}">
+                    <i class="fas fa-users"></i> Community
+                </a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Sacred Principles</h4>
+                <ul class="principles-list">
+                    <li>Divine Chaos & Sacred Order</li>
+                    <li>Universal Diamond Standard</li>
+                    <li>Collective Consciousness</li>
+                    <li>Ethical Technology</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Synthsara - Sacred Source License - Built with Love for Humanity's Awakening</p>
+        </div>
+    </footer>
+
+    <!-- Authentication Modals -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Sacred Login</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+                    <input type="text" id="loginUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Enter Sacred Space
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Sacred Registration</h2>
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="regUsername">Username</label>
+                    <input type="text" id="regUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="regPassword">Password</label>
+                    <input type="password" id="regPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Join Sacred Community
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sacred JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
+
